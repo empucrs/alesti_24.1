@@ -197,8 +197,30 @@ public class MinhaLinkedList {
     //Retorna uma lista com o indice de cada elemento ou null 
     // se não encontrar. 
     public int[] listOfIndexOf(int element){
+        int [] lista = new int[count];
 
-        return null;    
+        Nodo aux = head;
+        int current=0;
+        int countIndex=0;
+
+        while (aux!=null){
+            if(element==aux.valor){
+                lista[countIndex]=current;
+                countIndex++;
+            }
+            aux=aux.prox;
+            current++;
+        }
+
+        if(countIndex==0)
+            return null;
+        else{
+            int [] finalList = new int[countIndex];
+            for(int i=0; i<countIndex; i++)
+                finalList[i]=lista[i];
+            return finalList;
+        }
+        
     } 
 
     //Remove na lista encadeada, todos os nodos cuja posição 
@@ -213,8 +235,8 @@ public class MinhaLinkedList {
     }
     
     
-    //retorna true se encontrar uma sequencia de valores conforme
-    // a informada na lista de elementos.
+    //retorna true se encontrar uma sequencia de valores 
+    // conforme a informada na lista de elementos.
     //Exemplo:considere os valores [1,2,3],procure se esta 
     // sequencia continua de valores esta na lista 
     public boolean contains(int [] elements){
