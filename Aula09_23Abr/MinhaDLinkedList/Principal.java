@@ -1,42 +1,24 @@
 public class Principal {
     public static void main(String[] args) {
         MinhaDLinkedList mll = new MinhaDLinkedList();
-        System.out.println(mll);
-
-        mll.add(7);
-        System.out.println(mll);
-        System.out.println("size: "+mll.size());
-
+        mll.add(1);
+        mll.add(2);
         mll.add(3);
-        System.out.println(mll);
-        System.out.println("size: "+mll.size());
-
-        mll.add(17);
-        System.out.println(mll);
-        System.out.println("size: "+mll.size());
-
-        mll.add(27);
-        System.out.println(mll);
-        System.out.println("size: "+mll.size());
-
         mll.add(4);
-        System.out.println(mll);
-        System.out.println("size: "+mll.size());
+        mll.add(5);
 
-        mll.add(11);
-        System.out.println(mll);
-        System.out.println("size: "+mll.size());
+        System.out.println("a soma dos valores eh "+mll.somatorio());
+        System.out.println("o maior valor eh "+mll.maior());
 
-/*
-        System.out.println("O valor 4 está na lista: "+mll.contains(4));
-        System.out.println("O valor 77 está na lista: "+mll.contains(77));
+//        mll.clear();
+//        System.out.println("o maior valor eh "+mll.maior());
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(15));
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(5));
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(4));
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(3));
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(2));
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(1));
+        System.out.println("o ultimo idx eh "+mll.lastIndexLowerThan(0));
 
-        System.out.println("A posicao do valor 4 na lista é "+mll.indexOf(4));
-        System.out.println("A posicao do valor 77 na lista é "+mll.indexOf(77));
-
-        for(int i=0; i<mll.size(); i++)
-            System.out.println("O conteudo "+i+" da lista é "+ mll.get(i));
-
-*/
     }
 }

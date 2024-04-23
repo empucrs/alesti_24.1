@@ -188,4 +188,49 @@ public class MinhaDLinkedList {
         return sb.toString();
     }  
 
+    public int somatorio(){
+        int soma=0;
+        Nodo navegador=head;
+        while (navegador!=null) {
+            soma+=navegador.valor;
+            navegador=navegador.prox;
+        }
+        return soma;
+    }
+
+    public int maior(){
+        if(count==0)
+            throw new NullPointerException("A lista está vazia..");
+
+        int maior=head.valor;
+        Nodo navegador = head.prox;
+        while (navegador!=null) {
+            if(navegador.valor>maior)
+                maior=navegador.valor;
+            navegador=navegador.prox;
+            
+        }
+        return maior;
+    }
+
+    public int lastIndexLowerThan(int value){
+        if(count==0)
+            return -1;
+
+        int idx, aux;
+
+        aux=-1;
+        idx=0;
+
+        Nodo navegador=head;
+        while (navegador!=null) {
+            if(navegador.valor<value)
+                aux=idx;
+            idx++;
+            navegador=navegador.prox;            
+        }
+
+        return aux;
+    }
+
 }
