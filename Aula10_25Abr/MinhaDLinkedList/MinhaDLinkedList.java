@@ -233,4 +233,106 @@ public class MinhaDLinkedList {
         return aux;
     }
 
+    public int sumBetweenTwoIndexes(int fstIdx, int lstIdx){
+        if(((fstIdx<0)||(fstIdx>=count))||((lstIdx<0)||(lstIdx>=count)))
+            throw new IndexOutOfBoundsException("Indice invalido");
+
+        if(fstIdx>lstIdx){
+            int aux=fstIdx;
+            fstIdx=lstIdx;
+            lstIdx=aux;
+        }
+
+        //return recursiveSum(fstIdx, lstIdx, 0, 0, head);
+        return linearSum(fstIdx, lstIdx);
+    }
+
+    private int linearSum(int fstIdx, int lstIdx){
+        int sum=0;
+
+        Nodo navegador=head;
+        int idx=0;
+        while(idx<=lstIdx){
+            if(idx>=fstIdx)
+                sum+=navegador.valor;
+            idx++;
+            navegador=navegador.prox;
+        }
+
+        return sum;
+    }
+
+    private int recursiveSum(int fstIdx, int lstIdx, 
+                            int currSum, int currIdx, 
+                            Nodo currNode){
+
+        if(currIdx==lstIdx)
+            return currSum+=currNode.valor;
+        else{
+            if(currIdx>=fstIdx)
+                currSum+=currNode.valor;
+            return recursiveSum(fstIdx, lstIdx, currSum, currIdx+1, currNode.prox);            
+        }
+
+    }
+
+    public int secondGreater(){
+        if(count<=1)
+            throw new RuntimeException("A lista não tem a qtde de itens minima");
+
+        int greater, vGreater;
+
+        if(head.valor>head.prox.valor){
+            greater=head.valor;
+            vGreater=head.prox.valor;
+        }
+        else{
+            greater=head.prox.valor;
+            vGreater=head.valor;
+        }
+
+        Nodo navegador = head.prox.prox;
+
+        while (navegador!=null) {
+
+            if(navegador.valor>=greater){
+                vGreater=greater;
+                greater=navegador.valor;
+            }
+            else
+                if(navegador.valor>=vGreater)
+                    vGreater=navegador.valor;
+            
+            navegador=navegador.prox;            
+        }
+
+        return vGreater;
+    }
+
+    public int isSorted(){
+        if(count<=1)
+            throw new RuntimeException("A lista é muito pqna para ser considerada ordenada");
+
+        return sortedAlter01();
+    }
+
+    private int sortedAlter01(){
+
+        int crescente=0;
+        int decrescente=0;
+        Nodo navegador = head;
+        for(int i=0; i<count; i++){
+            if(navegador.valor<=navegador.prox.valor)
+                crescente++;
+            else if(navegador.valor>=navegador.prox.valor)
+                decrescente++;
+            navegador=navegador.prox;
+        }
+
+        if(crescente==count) return 1;
+        else if(decrescente==count) return -1;
+        else return 0;
+
+        
+    }
 }
